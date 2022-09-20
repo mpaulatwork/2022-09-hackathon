@@ -7,6 +7,8 @@ function windowResized() {
   width = windowHeight * (cameraWidth / cameraHeight);
   resizeCanvas(width, height);
 }
+// ios fix?
+setInterval(() => windowResized(), 1000);
 
 const Views = {
   Normal: 'Normal',
@@ -38,6 +40,7 @@ function initCaptureDevice() {
       `;
       windowResized();
     });
+    // for mac
     myCapture.elt.setAttribute('playsinline', '');
     myCapture.hide();
 
