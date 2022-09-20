@@ -1,4 +1,4 @@
-const version = 'v2';
+const version = 'v3';
 
 const $debug = document.getElementById('debug');
 $debug.innerHTML += `<b>${version}</b>`
