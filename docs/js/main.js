@@ -1,7 +1,10 @@
-console.log('hello');
+const version = 'v2';
 
-const cameraWidth = 320;
-const cameraHeight = 240;
+const $debug = document.getElementById('debug');
+$debug.innerHTML += `<b>${version}</b>`
+
+let cameraWidth = 10;
+let cameraHeight = 10;
 let width = 0;
 let height = 0;
 function windowResized() {
@@ -29,16 +32,21 @@ let myAsciiArt,
 
 function initCaptureDevice() {
   try {
-    myCapture = createCapture(VIDEO);
-    myCapture.size(cameraWidth, cameraHeight);
+    myCapture = createCapture(VIDEO, () => {
+      cameraHeight = myCapture.height;
+      cameraWidth = myCapture.width;
+      $debug.innerHTML += `
+        <div>
+          camera ${cameraWidth}x${cameraHeight}
+        </div>
+      `;
+      windowResized();
+    });
     myCapture.elt.setAttribute('playsinline', '');
-    scale(-1, 1);
     myCapture.hide();
 
-    console.log(
-      '[initCaptureDevice] capture ready. Resolution: ' +
-      myCapture.width + ' ' + myCapture.height
-    );
+    // setup mirror
+    scale(-1, 1);
   } catch(_err) {
     console.log('[initCaptureDevice] capture error: ' + _err);
   }
