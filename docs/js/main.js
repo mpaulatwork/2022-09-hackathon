@@ -1,8 +1,3 @@
-const version = 'v2';
-
-const $debug = document.getElementById('debug');
-$debug.innerHTML += `<b>${version}</b>`
-
 let cameraWidth = 10;
 let cameraHeight = 10;
 let width = 0;
@@ -14,8 +9,8 @@ function windowResized() {
 }
 
 const Views = {
-  Normal: 'normal',
-  ASCII: 'ascii',
+  Normal: 'Normal',
+  ASCII: 'ASCII',
 }
 let view = Views.Normal;
 function changeView() {
@@ -23,6 +18,7 @@ function changeView() {
    (view === Views.Normal && Views.ASCII) ||
    (Views.Normal)
   );
+  setMessage(`${view} mode`, 3000);
 }
 
 let myAsciiArt,

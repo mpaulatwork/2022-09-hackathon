@@ -4,7 +4,9 @@
     <script defer src="lib/p5.asciiart.min.js"></script>
     <script defer src="lib/p5.dom.min.js"></script>
     <script defer src="lib/p5.sound.min.js"></script>
+
     <script defer src="js/ascii.js"></script>
+    <script defer src="js/ui.js"></script>
     <script defer src="js/main.js"></script>
 
     <style>
@@ -30,9 +32,26 @@
         background-color: #ffffffd0;
         color: black;
       }
+
+      #message {
+        position: fixed;
+        z-index: 2;
+        bottom: 20%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+        font-size: 30px;
+        padding: 0.5em;
+        background-color: #ffffffd0;
+        color: black;
+      }
+      .hide {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <div id="debug"></div>
+    <div id="message"></div>
   </body>
 </html>
