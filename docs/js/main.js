@@ -12,16 +12,19 @@ setInterval(() => windowResized(), 1000);
 
 const Views = {
   Normal: 'Normal',
+  Rainbow: 'Rainbow',
   ASCII: 'ASCII',
 }
 let view = Views.Normal;
-function changeView() {
-  view = (
-   (view === Views.Normal && Views.ASCII) ||
+function changeView(newView) {
+  view = newView ?? (
+   (view === Views.Normal && Views.Rainbow) ||
+   (view === Views.Rainbow && Views.ASCII) ||
    (Views.Normal)
   );
   setMessage(`${view} mode`, 3000);
 }
+changeView(Views.Normal);
 
 let myAsciiArt,
     myCapture,
@@ -66,6 +69,7 @@ function setup() {
   frameRate(30);
 }
 
+const rainbow = new RainbowAssistant();
 function draw() {
   if (myCapture === null || myCapture === undefined) {
     background(50);
@@ -80,11 +84,18 @@ function draw() {
   background(0);
 
   if (view === Views.Normal) {
+    tint('white');
+    image(myCapture, 0, 0, width, height);
+  }
+
+  if (view === Views.Rainbow) {
+    tint(rainbow.getColor());
     image(myCapture, 0, 0, width, height);
   }
 
   if (view === Views.ASCII) {
     gfx.background(0);
+    gfx.tint('white');
     gfx.image(myCapture, 0, 0, gfx.width, gfx.height);
     gfx.filter(POSTERIZE, 5);
     ascii_arr = myAsciiArt.convert(gfx);
