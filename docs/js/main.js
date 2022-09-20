@@ -1,10 +1,12 @@
 console.log('hello');
 
+const cameraWidth = 320;
+const cameraHeight = 240;
 let width = 0;
 let height = 0;
 function windowResized() {
-  width = windowWidth;
   height = windowHeight;
+  width = windowHeight * (cameraWidth / cameraHeight);
   resizeCanvas(width, height);
 }
 
@@ -28,7 +30,7 @@ let myAsciiArt,
 function initCaptureDevice() {
   try {
     myCapture = createCapture(VIDEO);
-    myCapture.size(320, 240);
+    myCapture.size(cameraWidth, cameraHeight);
     myCapture.elt.setAttribute('playsinline', '');
     scale(-1, 1);
     myCapture.hide();
@@ -44,9 +46,8 @@ function initCaptureDevice() {
 
 function setup() {
   createCanvas(1600, 200);
-  windowResized();
-
   initCaptureDevice();
+  windowResized();
 
   gfx = createGraphics(Math.ceil(width / 8), Math.ceil(height / 8));
   gfx.pixelDensity(1);
