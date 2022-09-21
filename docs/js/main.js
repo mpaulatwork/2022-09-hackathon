@@ -22,7 +22,7 @@ function changeView(newView) {
    (view === Views.Rainbow && Views.ASCII) ||
    (Views.Normal)
   );
-  setMessage(`${view} mode`);
+  setMessage(`${view} mode`, 3000);
 }
 changeView(Views.Normal);
 

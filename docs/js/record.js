@@ -12,7 +12,7 @@ function toggleRecording(){
   if (video) {
     video.remove();
     video = undefined;
-    setMessage('deleted recording');
+    setMessage('deleted recording', 3000);
   } else if (recorder.state != 'recording'){
     recorder.start();
     setMessage('recording');
@@ -23,7 +23,7 @@ function toggleRecording(){
       video.id('playback');
     };
     recorder.stop();
-    setMessage('recording playback');
+    setMessage('playback', 3000);
   }
 }
 
