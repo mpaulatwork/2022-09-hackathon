@@ -1,0 +1,38 @@
+.recordButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recordButtonOuter {
+  background: none;
+  padding: 1vh;
+  border: 1vh solid white;
+  border-radius: 100%;
+}
+
+.recordButtonInner {
+  height: 8vh;
+  width: 8vh;
+  border-radius: 100%;
+  background-color: red;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recording .recordButtonInner {
+  background-color: black;
+}
+
+.recordButtonStop {
+  height: 50%;
+  width: 50%;
+  border-radius: 10%;
+  background-color: white;
+  cursor: pointer;
+}
+.stopped .recordButtonStop {
+  display: none;
+}
