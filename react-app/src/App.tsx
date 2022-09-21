@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { PaulFrame, usePaulFrame } from './iframe';
+import { PaulFrame, usePaulFrame } from './PaulFrame';
 
 function App() {
   const {
@@ -13,6 +13,9 @@ function App() {
       <div className="content">
         <div className='button'>
           example text
+        </div>
+        <div>
+
         </div>
         <div className='gap'>
           {/* creates whitespace within flexbox */}

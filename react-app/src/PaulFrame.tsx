@@ -1,5 +1,4 @@
 import React, { CSSProperties, useCallback, useEffect, useState } from 'react';
-import './App.css';
 
 type Signal = 'record' | 'stop' | 'reset';
 type SendSignal = (signal: Signal) => void;
@@ -37,12 +36,13 @@ export const PaulFrame = (props: {
 }) => {
   const styles: CSSProperties = {
     position: 'absolute',
-    zIndex: '-1',
+    zIndex: -1,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: '100%',
     height: '100%',
+    background: 'black',
   };
   return (
     <iframe
