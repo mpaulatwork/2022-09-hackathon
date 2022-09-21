@@ -22,7 +22,7 @@ function changeView(newView) {
    (view === Views.Rainbow && Views.ASCII) ||
    (Views.Normal)
   );
-  setMessage(`${view} mode`, 3000);
+  setMessage(`${view} mode`);
 }
 changeView(Views.Normal);
 
@@ -33,7 +33,7 @@ let myAsciiArt,
 
 function initCaptureDevice() {
   try {
-    myCapture = createCapture(VIDEO, () => {
+    myCapture = createCapture(VIDEO, stream => {
       cameraHeight = myCapture.height;
       cameraWidth = myCapture.width;
       $debug.innerHTML += `
@@ -42,6 +42,7 @@ function initCaptureDevice() {
         </div>
       `;
       windowResized();
+      setRecorder(stream);
     });
     // for mac
     myCapture.elt.setAttribute('playsinline', '');

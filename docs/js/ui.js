@@ -15,9 +15,8 @@ function setMessage(msg, timeoutMS) {
     $message.innerHTML = msg;
     $message.classList.remove('hide');
 
-    if (timeoutMS) {
-      messageTimeout = setTimeout(() => setMessage(''), timeoutMS);
-    }
+    timeoutMS = timeoutMS ?? 3000;
+    messageTimeout = setTimeout(() => setMessage(''), timeoutMS);
   } else {
     $message.classList.add('hide');
   }
