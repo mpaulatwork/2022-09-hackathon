@@ -1,13 +1,8 @@
 const version = 'v4';
+const isDebug = window.location.search.includes('debug');
 
 const $debug = document.getElementById('debug');
 $debug.innerHTML += `<b>${version}</b>`;
-
-const isDebug = window.location.search.includes('debug')
-
-if (!isDebug) {
-  $debug.classList.add('hide');
-}
 
 const $message = document.getElementById('message');
 
@@ -30,3 +25,8 @@ function setMessage(msg, timeoutMS) {
   }
 }
 setMessage('');
+
+if (!isDebug) {
+  $debug.classList.add('hide');
+  $message.classList.add('hide');
+}
