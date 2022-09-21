@@ -1,32 +1,23 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
-
-interface PaulFrame {
-  sendSignal(msg: string): void;
-}
 
 function App() {
   const [iframeNode, setIframeNode] = useState<HTMLIFrameElement>();
-  // const iframeRef = useRef<HTMLIFrameElement>(null);
+  const onRefChange = useCallback((node: HTMLIFrameElement) => {
+    setIframeNode(node);
+  }, []);
 
   useEffect(() => {
     window.addEventListener('message', event => {
+      // todo handle messages from iframe
       console.log('parent received', event);
     });
   }, []);
 
-  // (window as any).sendConfirm = () => {
-  //   doneCallback();
-  // };
-  const sendSignal = useCallback(() => {
+  const sendSignal = useCallback((msg: string) => {
     if (!iframeNode) { return; }
-    iframeNode.contentWindow?.postMessage('record', '*');
+    iframeNode.contentWindow?.postMessage(msg, '*');
   }, [iframeNode]);
-
-  const onRefChange = useCallback((node: HTMLIFrameElement) => {
-    console.log(node);
-    setIframeNode(node);
-  }, []);
 
   return (
     <div className="App">
@@ -37,7 +28,7 @@ function App() {
         <div className='gap'>
           {/* creates whitespace within flexbox */}
         </div>
-        <div className='button' onClick={sendSignal}>
+        <div className='button' onClick={() => sendSignal('record')}>
           example button
         </div>
       </div>
