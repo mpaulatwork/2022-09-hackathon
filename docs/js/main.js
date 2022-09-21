@@ -122,6 +122,12 @@ window.parent.postMessage('child loaded', '*');
 window.addEventListener('message', event => {
   console.log(event);
   if (event.data === 'record') {
-    toggleRecording();
+    startRecording();
+  }
+  if (event.data === 'stop') {
+    stopRecording();
+  }
+  if (event.data === 'reset') {
+    deleteRecording();
   }
 });

@@ -17,8 +17,16 @@ function App() {
         <div className='gap'>
           {/* creates whitespace within flexbox */}
         </div>
-        <div className='button' onClick={() => sendSignal('record')}>
-          example button
+        <div className='buttonRow'>
+          <div className='button' onClick={() => sendSignal('record')}>
+            record
+          </div>
+          <div className='button' onClick={() => sendSignal('stop')}>
+            stop
+          </div>
+          <div className='button' onClick={() => sendSignal('reset')}>
+            reset
+          </div>
         </div>
       </div>
       <PaulFrame onLoad={onLoad} />

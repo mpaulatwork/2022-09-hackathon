@@ -1,7 +1,7 @@
 import React, { CSSProperties, useCallback, useEffect, useState } from 'react';
 import './App.css';
 
-type Signal = 'record' | 'playback' | 'stop';
+type Signal = 'record' | 'stop' | 'reset';
 type SendSignal = (signal: Signal) => void;
 
 export const usePaulFrame = (props?: {
@@ -48,8 +48,8 @@ export const PaulFrame = (props: {
     <iframe
       style={styles}
       ref={props.onLoad}
-      src="https://mpaulatwork.github.io/2022-09-hackathon/"
-      // src="http://localhost:8000"
+      // src="https://mpaulatwork.github.io/2022-09-hackathon/"
+      src="http://localhost:8000"
       allow="camera;microphone"
     ></iframe>
   );

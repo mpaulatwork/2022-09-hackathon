@@ -13,6 +13,12 @@
 .content > * {
   margin: 3em 0;
 }
+.content .buttonRow {
+  display: flex;
+}
+.content .buttonRow > * {
+  margin: 0 0.5em;
+}
 .content .button {
   font-size: 2em;
   background-color: white;
