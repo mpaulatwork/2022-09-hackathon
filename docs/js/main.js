@@ -106,6 +106,11 @@ function draw() {
   pop();
 }
 
-function mouseReleased() {
-  changeView();
-}
+document.body.addEventListener('click', evt => {
+  if (evt.target.id === 'debug') {
+    // todo
+  }
+  if (evt.target.nodeName.toLowerCase() === 'canvas') {
+    changeView();
+  }
+});
