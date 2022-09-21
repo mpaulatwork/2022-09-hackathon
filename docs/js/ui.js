@@ -1,12 +1,19 @@
 const version = 'v4';
 
 const $debug = document.getElementById('debug');
-$debug.innerHTML += `<b>${version}</b>`
+$debug.innerHTML += `<b>${version}</b>`;
+
+const isDebug = window.location.search.includes('debug')
+
+if (!isDebug) {
+  $debug.classList.add('hide');
+}
 
 const $message = document.getElementById('message');
 
 let messageTimeout;
 function setMessage(msg, timeoutMS) {
+  if (!isDebug) { return; }
   if (messageTimeout) {
     clearTimeout(messageTimeout);
     messageTimeout = undefined;
