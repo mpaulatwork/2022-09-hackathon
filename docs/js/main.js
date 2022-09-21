@@ -115,3 +115,13 @@ document.body.addEventListener('click', evt => {
     changeView();
   }
 });
+
+// iframe
+// https://stackoverflow.com/a/536624
+window.parent.postMessage('child loaded', '*');
+window.addEventListener('message', event => {
+  console.log(event);
+  if (event.data === 'record') {
+    toggleRecording();
+  }
+});
